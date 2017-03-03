@@ -2,18 +2,21 @@ import React, { Component, PropTypes } from 'react'
 import styles from './styles'
 import ButtonBase from '../ButtonBase'
 
-const ButtonNumber = ({displayNumber}) => {
+const ButtonNumber = ({displayNumber, onClickHandler}) => {
   const add = () => {
-    console.log(displayNumber)
-    // console.log(`button ${this.props.number} clicked`)
+    onClickHandler(displayNumber)
   }
 
-  return (<ButtonBase displayLetter={displayNumber} clickHandler={add} />)
+  return (
+    <button style={styles} onClick={add}>
+      {displayNumber}
+    </button>
+  )
 }
 
-
 ButtonNumber.propTypes = {
-  displayNumber: React.PropTypes.string
+  displayNumber: React.PropTypes.string,
+  onClickHandler: React.PropTypes.func
 }
 
 export default ButtonNumber
