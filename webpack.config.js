@@ -5,12 +5,20 @@ const srcDir = path.join(rootDir, '/src')
 
 module.exports = {
   entry: {
-    bundle: path.join(srcDir, 'index.js')
+    javascript: path.join(srcDir, 'index.js'),
+    html: path.join(srcDir, 'index.html')
   },
   output: {
     path: distDir,
-    filename: '[name].js'
+    filename: 'bundle.js'
   },
+
+  devServer: {
+    contentBase: 'dist',
+    port: 1337
+  },
+
+  devtool: 'inline-source-map',
 
   module: {
     loaders: [
@@ -21,8 +29,11 @@ module.exports = {
         query: {
           presets: ['react', 'es2015']
         }
+      },
+      {
+        test: /\.html$/,
+        loader: 'file?name=[path][name].[ext]'
       }
     ]
-  },
-  devtool: 'inline-source-map'
+  }
 }
