@@ -9,7 +9,7 @@ const ButtonBase = ({displayLetter, clickHandler}) => (
 
 ButtonBase.propTypes = {
   displayLetter: React.PropTypes.string,
-  clickHandler: React.PropTypes.func,
+  clickHandler: React.PropTypes.func
 }
 
 export default ButtonBase
