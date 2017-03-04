@@ -4,9 +4,10 @@ const distDir = path.join(rootDir, '/dist')
 const srcDir = path.join(rootDir, '/src')
 
 module.exports = {
+  context: srcDir,
   entry: {
-    javascript: path.join(srcDir, 'index.js'),
-    html: path.join(srcDir, 'index.html')
+    javascript: './index.js',
+    html: './index.html'
   },
   output: {
     path: distDir,

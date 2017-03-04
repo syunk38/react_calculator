@@ -1,7 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import styles from './styles'
-import ButtonNumber from '../ButtonNumber'
+import NumberButton from '../NumberButton'
+import ClearButton from '../ClearButton'
 import Display from '../Display'
+
+const newValueFromState = (appendValue, stateValue) => {
+  if (stateValue === "0"){
+    return appendValue
+  }
+  const newValue = `${stateValue}${appendValue}`
+  if (newValue.length > 10){
+    return stateValue
+  }
+  return newValue
+}
 
 class Calculator extends Component{
   constructor() {
@@ -9,41 +21,46 @@ class Calculator extends Component{
     this.state = {
       value: "0"
     }
-    this.addValue = this.addValue.bind(this)
+    this.appendValue = this.appendValue.bind(this)
+    this.clearValue = this.clearValue.bind(this)
   }
-  addValue(value) {
-    const newValue = `${this.state.value}${value}`
-    if (newValue.length > 10){
-      return
-    }
+  appendValue(value) {
     this.setState({
-      value: newValue
+      value: newValueFromState(value, this.state.value)
+    })
+  }
+  clearValue() {
+    this.setState({
+      value: "0"
     })
   }
   render() {
     return (
-        <div style={styles}>
-          <Display display={this.state.value}/>
-          <div>
-            <ButtonNumber displayNumber="1" onClickHandler={this.addValue}/>
-            <ButtonNumber displayNumber="2" onClickHandler={this.addValue}/>
-            <ButtonNumber displayNumber="3" onClickHandler={this.addValue}/>
-          </div>
-          <div>
-            <ButtonNumber displayNumber="4" onClickHandler={this.addValue}/>
-            <ButtonNumber displayNumber="5" onClickHandler={this.addValue}/>
-            <ButtonNumber displayNumber="6" onClickHandler={this.addValue}/>
-          </div>
-          <div>
-            <ButtonNumber displayNumber="7" onClickHandler={this.addValue}/>
-            <ButtonNumber displayNumber="8" onClickHandler={this.addValue}/>
-            <ButtonNumber displayNumber="9" onClickHandler={this.addValue}/>
-          </div>
-          <div>
-            <ButtonNumber displayNumber="0" onClickHandler={this.addValue}/>
-          </div>
+      <div style={styles}>
+        <Display display={this.state.value}/>
+        <div>
+          <ClearButton onClickHandler={this.clearValue}>clear</ClearButton>
         </div>
-      )
+        <div>
+          <NumberButton onClickHandler={this.appendValue}>1</NumberButton>
+          <NumberButton onClickHandler={this.appendValue}>2</NumberButton>
+          <NumberButton onClickHandler={this.appendValue}>3</NumberButton>
+        </div>
+        <div>
+          <NumberButton onClickHandler={this.appendValue}>4</NumberButton>
+          <NumberButton onClickHandler={this.appendValue}>5</NumberButton>
+          <NumberButton onClickHandler={this.appendValue}>6</NumberButton>
+        </div>
+        <div>
+          <NumberButton onClickHandler={this.appendValue}>7</NumberButton>
+          <NumberButton onClickHandler={this.appendValue}>8</NumberButton>
+          <NumberButton onClickHandler={this.appendValue}>9</NumberButton>
+        </div>
+        <div>
+          <NumberButton onClickHandler={this.appendValue}>0</NumberButton>
+        </div>
+      </div>
+    )
   }
 }
 
