@@ -4,13 +4,13 @@ import NumberButton from '../NumberButton'
 import ClearButton from '../ClearButton'
 import Display from '../Display'
 
-const newValueFromState = (appendValue, stateValue) => {
-  if (stateValue === "0"){
-    return appendValue
+const buildNewValue = (state, value) => {
+  if (state.value === "0"){
+    return value
   }
-  const newValue = `${stateValue}${appendValue}`
+  const newValue = `${state.value}${value}`
   if (newValue.length > 10){
-    return stateValue
+    return state.value
   }
   return newValue
 }
@@ -26,7 +26,7 @@ class Calculator extends Component{
   }
   appendValue(value) {
     this.setState({
-      value: newValueFromState(value, this.state.value)
+      value: buildNewValue(this.state, value)
     })
   }
   clearValue() {
