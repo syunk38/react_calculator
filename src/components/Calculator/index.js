@@ -21,23 +21,34 @@ const buildNewValue = (state, value) => {
   return newValue
 }
 
-class Calculator extends Component{
+export default class Calculator extends Component{
   constructor() {
     super()
     this.state = {
-      value: "0"
+      value: "0",
+      mode: NEUTRAL
     }
     this.appendValue = this.appendValue.bind(this)
     this.clearValue = this.clearValue.bind(this)
+    this.setModeAddition = this.setModeAddition.bind(this)
   }
   appendValue(value) {
     this.setState({
+      ...this.state,
       value: buildNewValue(this.state, value)
     })
   }
   clearValue() {
     this.setState({
-      value: "0"
+      ...this.state,
+      value: "0",
+      mode: NEUTRAL
+    })
+  }
+  setModeAddition() {
+    this.setState({
+      ...this.state,
+      mode: ADDITION
     })
   }
   render() {
@@ -65,13 +76,8 @@ class Calculator extends Component{
         <div>
           <NumberButton onClickHandler={this.appendValue}>0</NumberButton>
         </div>
+        <div>mode: {this.state.mode}</div>
       </div>
     )
   }
 }
-
-Calculator.propTypes = {
-  name: React.PropTypes.string
-}
-
-export default Calculator
