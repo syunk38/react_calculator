@@ -8,6 +8,7 @@ import { NEUTRAL, ADDITION } from '../../constants/modes'
 // components
 import NumberButton from '../NumberButton'
 import ClearButton from '../ClearButton'
+import AdditionButton from '../AdditionButton'
 import Display from '../Display'
 
 const buildNewValue = (state, value) => {
@@ -57,6 +58,7 @@ export default class Calculator extends Component{
         <Display display={this.state.value}/>
         <div>
           <ClearButton onClickHandler={this.clearValue}>clear</ClearButton>
+          <AdditionButton onClickHandler={this.setModeAddition}>+</AdditionButton>
         </div>
         <div>
           <NumberButton onClickHandler={this.appendValue}>1</NumberButton>
