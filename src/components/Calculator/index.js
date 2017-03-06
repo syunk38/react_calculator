@@ -1,5 +1,11 @@
+// library
 import React, { Component, PropTypes } from 'react'
 import styles from './styles'
+
+// constants
+import { NEUTRAL, ADDITION } from '../../constants/modes'
+
+// components
 import NumberButton from '../NumberButton'
 import ClearButton from '../ClearButton'
 import Display from '../Display'
