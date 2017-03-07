@@ -1,14 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import styles from './styles'
 
-const Display = ({display}) => (
+const Display = ({children}) => (
   <div>
-    {display}
+    {children}
   </div>
 )
-
-Display.propTypes = {
-  display: React.PropTypes.string
-}
 
 export default Display

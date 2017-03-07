@@ -55,7 +55,7 @@ export default class Calculator extends Component{
   render() {
     return (
       <div style={styles}>
-        <Display display={this.state.value}/>
+        <Display>{this.state.displayValue}</Display>
         <div>
           <ClearButton onClickHandler={this.clearValue}>clear</ClearButton>
           <AdditionButton onClickHandler={this.setModeAddition}>+</AdditionButton>
