@@ -12,12 +12,15 @@ import ModeButton from '../ModeButton'
 import Display from '../Display'
 
 const buildNewValue = (state, value) => {
-  if (state.value === "0"){
+  if (state.displayValue === "0") {
     return value
   }
-  const newValue = `${state.value}${value}`
+  if(state.mode !== NEUTRAL && state.rightValue === 0) {
+    return value
+  }
+  const newValue = `${state.displayValue}${value}`
   if (newValue.length > 10){
-    return state.value
+    return state.displayValue
   }
   return newValue
 }
@@ -26,30 +29,50 @@ export default class Calculator extends Component{
   constructor() {
     super()
     this.state = {
-      value: "0",
+      displayValue: "0",
+      leftValue: 0,
+      rightValue: 0,
       mode: NEUTRAL
     }
     this.appendValue = this.appendValue.bind(this)
     this.clearValue = this.clearValue.bind(this)
-    this.setModeAddition = this.setModeAddition.bind(this)
   }
   appendValue(value) {
+    const newValue = buildNewValue(this.state, value)
     this.setState({
       ...this.state,
-      value: buildNewValue(this.state, value)
+      displayValue: newValue,
+      rightValue: parseInt(newValue)
     })
   }
   clearValue() {
     this.setState({
       ...this.state,
-      value: "0",
+      displayValue: "0",
+      rightValue: 0,
+      leftValue: 0,
       mode: NEUTRAL
     })
   }
-  setModeAddition() {
+  setMode(mode) {
     this.setState({
       ...this.state,
-      mode: ADDITION
+      rightValue: 0,
+      leftValue: parseInt(this.state.displayValue),
+      mode: mode
+    })
+  }
+  execute() {
+    const funcByMode = (mode) => {
+      return (left, right) => (left + right)
+    }
+    const func = funcByMode(this.state.mode)
+    const result = func(this.state.left, this.state.right)
+    this.setState({
+      displayValue: result,
+      leftValue: result,
+      rightValue: 0,
+      mode: NEWTRAL
     })
   }
   render() {
@@ -58,7 +81,7 @@ export default class Calculator extends Component{
         <Display>{this.state.displayValue}</Display>
         <div>
           <ClearButton onClickHandler={this.clearValue}>clear</ClearButton>
-          <AdditionButton onClickHandler={this.setModeAddition}>+</AdditionButton>
+          <ModeButton onClick={() => { this.setMode(ADDITION) }}>+</ModeButton>
         </div>
         <div>
           <NumberButton onClickHandler={this.appendValue}>1</NumberButton>
