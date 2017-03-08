@@ -1,2 +1,5 @@
 export const NEUTRAL = "newtral"
 export const ADDITION = "addition"
+export const SUBSTARCTION = "subtraction"
+export const MULTIPLICATION = "multiplication"
+export const DIVISION = "division"

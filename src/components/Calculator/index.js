@@ -3,13 +3,16 @@ import React, { Component, PropTypes } from 'react'
 import styles from './styles'
 
 // constants
-import { NEUTRAL, ADDITION } from '../../constants/modes'
+import { NEUTRAL, ADDITION, SUBSTARCTION, MULTIPLICATION, DIVISION } from '../../constants/modes'
 
 // components
 import NumberButton from '../NumberButton'
 import ClearButton from '../ClearButton'
 import ModeButton from '../ModeButton'
 import Display from '../Display'
+
+/// Util
+import funcByMode from './funcByMode'
 
 const buildNewValue = (state, value) => {
   if (state.displayValue === "0") {
@@ -63,13 +66,10 @@ export default class Calculator extends Component{
     })
   }
   execute() {
-    const funcByMode = (mode) => {
-      return (left, right) => (left + right)
-    }
     const func = funcByMode(this.state.mode)
     const result = func(this.state.leftValue, this.state.rightValue)
     this.setState({
-      displayValue: result,
+      displayValue: result.toString(),
       leftValue: result,
       rightValue: 0,
       mode: NEUTRAL
@@ -82,6 +82,9 @@ export default class Calculator extends Component{
         <div>
           <ClearButton onClickHandler={this.clearValue}>clear</ClearButton>
           <ModeButton onClick={() => (this.setMode(ADDITION))}>+</ModeButton>
+          <ModeButton onClick={() => (this.setMode(SUBSTARCTION))}>-</ModeButton>
+          <ModeButton onClick={() => (this.setMode(MULTIPLICATION))}>×</ModeButton>
+          <ModeButton onClick={() => (this.setMode(DIVISION))}>÷</ModeButton>
           <ModeButton onClick={() => (this.execute()) }>=</ModeButton>
         </div>
         <div>
