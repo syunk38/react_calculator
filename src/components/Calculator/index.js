@@ -67,12 +67,12 @@ export default class Calculator extends Component{
       return (left, right) => (left + right)
     }
     const func = funcByMode(this.state.mode)
-    const result = func(this.state.left, this.state.right)
+    const result = func(this.state.leftValue, this.state.rightValue)
     this.setState({
       displayValue: result,
       leftValue: result,
       rightValue: 0,
-      mode: NEWTRAL
+      mode: NEUTRAL
     })
   }
   render() {
@@ -81,7 +81,8 @@ export default class Calculator extends Component{
         <Display>{this.state.displayValue}</Display>
         <div>
           <ClearButton onClickHandler={this.clearValue}>clear</ClearButton>
-          <ModeButton onClick={() => { this.setMode(ADDITION) }}>+</ModeButton>
+          <ModeButton onClick={() => (this.setMode(ADDITION))}>+</ModeButton>
+          <ModeButton onClick={() => (this.execute()) }>=</ModeButton>
         </div>
         <div>
           <NumberButton onClickHandler={this.appendValue}>1</NumberButton>
