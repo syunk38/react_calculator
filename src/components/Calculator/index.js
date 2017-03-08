@@ -8,7 +8,7 @@ import { NEUTRAL, ADDITION } from '../../constants/modes'
 // components
 import NumberButton from '../NumberButton'
 import ClearButton from '../ClearButton'
-import AdditionButton from '../AdditionButton'
+import ModeButton from '../ModeButton'
 import Display from '../Display'
 
 const buildNewValue = (state, value) => {
