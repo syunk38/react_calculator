@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import styles from './styles'
 
 const Display = ({children}) => (
-  <div>
+  <div className={`${styles}`}>
     {children}
   </div>
 )

@@ -1,18 +1,16 @@
 // library
 import React, { Component, PropTypes } from 'react'
-import styles from './styles'
-
 // constants
 import { NEUTRAL, ADDITION, SUBSTARCTION, MULTIPLICATION, DIVISION } from '../../constants/modes'
-
 // components
 import NumberButton from '../NumberButton'
 import ClearButton from '../ClearButton'
 import ModeButton from '../ModeButton'
 import Display from '../Display'
-
 /// Util
 import funcByMode from './funcByMode'
+// Styles
+import styles from './styles'
 
 const buildNewValue = (state, value) => {
   if (state.displayValue === "0") {
@@ -77,7 +75,7 @@ export default class Calculator extends Component{
   }
   render() {
     return (
-      <div style={styles}>
+      <div className={`${styles}`}>
         <Display>{this.state.displayValue}</Display>
         <div>
           <ClearButton onClickHandler={this.clearValue}>clear</ClearButton>
