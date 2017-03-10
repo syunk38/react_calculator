@@ -1356,7 +1356,13 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-glamor@^3.0:
+glamor-reset@^3.0.0-1:
+  version "3.0.0-1"
+  resolved "https://registry.yarnpkg.com/glamor-reset/-/glamor-reset-3.0.0-1.tgz#64f2d8ad7a629094662ef7c62f254b0a18d128e3"
+  dependencies:
+    glamor "^3.0.0-1"
+
+glamor@^3.0, glamor@^3.0.0-1:
   version "3.0.0-1"
   resolved "https://registry.yarnpkg.com/glamor/-/glamor-3.0.0-1.tgz#60f489e96d96c12620803d3677ac26413cb76a95"
   dependencies:
