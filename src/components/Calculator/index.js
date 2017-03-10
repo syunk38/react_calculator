@@ -71,7 +71,7 @@ export default class Calculator extends Component{
           onClear={() => (this.clearValue())}
           onSetMode={(mode) => (this.setMode(mode))}
           onExecute={() => (this.execute())} />
-        <NumberPanel onAppendValue={(number) => {this.appendValue(number)}}/>
+        <NumberPanel onAppendNumber={(number) => {this.appendValue(number)}}/>
       </div>
     )
   }

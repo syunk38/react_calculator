@@ -1,26 +1,30 @@
 import React, { Component, PropTypes } from 'react'
 import styles from './styles'
 
-const NumberPanel = ({children, onAppendNumber}) => {
+const NumberButton = ({children, onAppendNumber}) => (
+  <button className={`${styles}`} onClick={() => (onAppendNumber(children))}>{children}</button>
+)
+
+const NumberPanel = ({onAppendNumber}) => {
   return (
     <div>
       <div>
-        <button className={`${styles}`} onClick={() => (this.onAppendNumber(1))}>1</button>
-        <button className={`${styles}`} onClick={() => (this.onAppendNumber(2))}>2</button>
-        <button className={`${styles}`} onClick={() => (this.onAppendNumber(3))}>3</button>
+        <NumberButton onAppendNumber={onAppendNumber}>1</NumberButton>
+        <NumberButton onAppendNumber={onAppendNumber}>2</NumberButton>
+        <NumberButton onAppendNumber={onAppendNumber}>3</NumberButton>
       </div>
       <div>
-        <button className={`${styles}`} onClick={() => (this.onAppendNumber(4))}>4</button>
-        <button className={`${styles}`} onClick={() => (this.onAppendNumber(5))}>5</button>
-        <button className={`${styles}`} onClick={() => (this.onAppendNumber(6))}>6</button>
+        <NumberButton onAppendNumber={onAppendNumber}>4</NumberButton>
+        <NumberButton onAppendNumber={onAppendNumber}>5</NumberButton>
+        <NumberButton onAppendNumber={onAppendNumber}>6</NumberButton>
       </div>
       <div>
-        <button className={`${styles}`} onClick={() => (this.onAppendNumber(7))}>7</button>
-        <button className={`${styles}`} onClick={() => (this.onAppendNumber(8))}>8</button>
-        <button className={`${styles}`} onClick={() => (this.onAppendNumber(9))}>9</button>
+        <NumberButton onAppendNumber={onAppendNumber}>7</NumberButton>
+        <NumberButton onAppendNumber={onAppendNumber}>8</NumberButton>
+        <NumberButton onAppendNumber={onAppendNumber}>9</NumberButton>
       </div>
       <div>
-        <button className={`${styles}`} onClick={() => (this.appendValue(0))}>0</button>
+        <NumberButton onAppendNumber={onAppendNumber}>0</NumberButton>
       </div>
     </div>
   )
