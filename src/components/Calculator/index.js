@@ -4,8 +4,7 @@ import React, { Component, PropTypes } from 'react'
 import { NEUTRAL, ADDITION, SUBSTARCTION, MULTIPLICATION, DIVISION } from '../../constants/modes'
 // components
 import NumberButton from '../NumberButton'
-import ClearButton from '../ClearButton'
-import ModeButton from '../ModeButton'
+import FunctionalButtons from '../FunctionalButtons'
 import Display from '../Display'
 /// Util
 import funcByMode from './funcByMode'
@@ -76,14 +75,10 @@ export default class Calculator extends Component{
     return (
       <div className={`${styles}`}>
         <Display>{this.state.displayValue}</Display>
-        <div>
-          <ClearButton onClick={() => (this.clearValue())}>clear</ClearButton>
-          <ModeButton onClick={() => (this.setMode(ADDITION))}>+</ModeButton>
-          <ModeButton onClick={() => (this.setMode(SUBSTARCTION))}>-</ModeButton>
-          <ModeButton onClick={() => (this.setMode(MULTIPLICATION))}>×</ModeButton>
-          <ModeButton onClick={() => (this.setMode(DIVISION))}>÷</ModeButton>
-          <ModeButton onClick={() => (this.execute()) }>=</ModeButton>
-        </div>
+        <FunctionalButtons
+          onClear={() => (this.clearValue())}
+          onSetMode={(mode) => (this.setMode(mode))}
+          onExecute={() => (this.execute())} />
         <div>
           <NumberButton onClick={() => (this.appendValue(1))}>1</NumberButton>
           <NumberButton onClick={() => (this.appendValue(2))}>2</NumberButton>
@@ -102,7 +97,6 @@ export default class Calculator extends Component{
         <div>
           <NumberButton onClick={() => (this.appendValue(0))}>0</NumberButton>
         </div>
-        <div>mode: {this.state.mode}</div>
       </div>
     )
   }
