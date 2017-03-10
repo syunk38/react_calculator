@@ -3,7 +3,7 @@ import styles from './styles'
 
 const NumberButton = ({children, onClick}) => {
   return (
-    <button style={styles} onClick={() => { onClick() }}>
+    <button className={`${styles}`} onClick={() => { onClick() }}>
       {children}
     </button>
   )

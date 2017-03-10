@@ -86,22 +86,24 @@ export default class Calculator extends Component{
           onSetMode={(mode) => (this.setMode(mode))}
           onExecute={() => (this.execute())} />
         <div>
-          <NumberButton onClick={() => (this.appendValue(1))}>1</NumberButton>
-          <NumberButton onClick={() => (this.appendValue(2))}>2</NumberButton>
-          <NumberButton onClick={() => (this.appendValue(3))}>3</NumberButton>
-        </div>
-        <div>
-          <NumberButton onClick={() => (this.appendValue(4))}>4</NumberButton>
-          <NumberButton onClick={() => (this.appendValue(5))}>5</NumberButton>
-          <NumberButton onClick={() => (this.appendValue(6))}>6</NumberButton>
-        </div>
-        <div>
-          <NumberButton onClick={() => (this.appendValue(7))}>7</NumberButton>
-          <NumberButton onClick={() => (this.appendValue(8))}>8</NumberButton>
-          <NumberButton onClick={() => (this.appendValue(9))}>9</NumberButton>
-        </div>
-        <div>
-          <NumberButton onClick={() => (this.appendValue(0))}>0</NumberButton>
+          <div>
+            <NumberButton onClick={() => (this.appendValue(1))}>1</NumberButton>
+            <NumberButton onClick={() => (this.appendValue(2))}>2</NumberButton>
+            <NumberButton onClick={() => (this.appendValue(3))}>3</NumberButton>
+          </div>
+          <div>
+            <NumberButton onClick={() => (this.appendValue(4))}>4</NumberButton>
+            <NumberButton onClick={() => (this.appendValue(5))}>5</NumberButton>
+            <NumberButton onClick={() => (this.appendValue(6))}>6</NumberButton>
+          </div>
+          <div>
+            <NumberButton onClick={() => (this.appendValue(7))}>7</NumberButton>
+            <NumberButton onClick={() => (this.appendValue(8))}>8</NumberButton>
+            <NumberButton onClick={() => (this.appendValue(9))}>9</NumberButton>
+          </div>
+          <div>
+            <NumberButton onClick={() => (this.appendValue(0))}>0</NumberButton>
+          </div>
         </div>
       </div>
     )
