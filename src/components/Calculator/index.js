@@ -1,29 +1,16 @@
 // library
 import React, { Component, PropTypes } from 'react'
 // constants
-import { NEUTRAL, ADDITION, SUBSTARCTION, MULTIPLICATION, DIVISION } from '../../constants/modes'
+import { NEUTRAL } from '../../constants/modes'
 // components
-import NumberButton from '../NumberButton'
-import FunctionalButtons from '../FunctionalButtons'
+import NumberPanel from '../NumberPanel'
+import FunctionPanel from '../FunctionPanel'
 import Display from '../Display'
 /// Util
 import funcByMode from './funcByMode'
+import buildNewValue from './buildNewValue'
 // Styles
 import styles from './styles'
-
-const buildNewValue = (state, value) => {
-  if (state.displayValue === "0") {
-    return value
-  }
-  if(state.mode !== NEUTRAL && state.rightValue === 0) {
-    return value
-  }
-  const newValue = `${state.displayValue}${value}`
-  if (newValue.length > 10){
-    return state.displayValue
-  }
-  return newValue
-}
 
 export default class Calculator extends Component{
   constructor() {
@@ -34,7 +21,6 @@ export default class Calculator extends Component{
       rightValue: 0,
       mode: NEUTRAL
     }
-    this.appendValue = this.appendValue.bind(this)
   }
   appendValue(value) {
     const newValue = buildNewValue(this.state, value)
@@ -81,30 +67,11 @@ export default class Calculator extends Component{
     return (
       <div className={`${styles}`}>
         <Display>{this.state.displayValue}</Display>
-        <FunctionalButtons
+        <FunctionPanel
           onClear={() => (this.clearValue())}
           onSetMode={(mode) => (this.setMode(mode))}
           onExecute={() => (this.execute())} />
-        <div>
-          <div>
-            <NumberButton onClick={() => (this.appendValue(1))}>1</NumberButton>
-            <NumberButton onClick={() => (this.appendValue(2))}>2</NumberButton>
-            <NumberButton onClick={() => (this.appendValue(3))}>3</NumberButton>
-          </div>
-          <div>
-            <NumberButton onClick={() => (this.appendValue(4))}>4</NumberButton>
-            <NumberButton onClick={() => (this.appendValue(5))}>5</NumberButton>
-            <NumberButton onClick={() => (this.appendValue(6))}>6</NumberButton>
-          </div>
-          <div>
-            <NumberButton onClick={() => (this.appendValue(7))}>7</NumberButton>
-            <NumberButton onClick={() => (this.appendValue(8))}>8</NumberButton>
-            <NumberButton onClick={() => (this.appendValue(9))}>9</NumberButton>
-          </div>
-          <div>
-            <NumberButton onClick={() => (this.appendValue(0))}>0</NumberButton>
-          </div>
-        </div>
+        <NumberPanel onAppendValue={(number) => {this.appendValue(number)}}/>
       </div>
     )
   }
