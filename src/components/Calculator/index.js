@@ -36,7 +36,6 @@ export default class Calculator extends Component{
       mode: NEUTRAL
     }
     this.appendValue = this.appendValue.bind(this)
-    this.clearValue = this.clearValue.bind(this)
   }
   appendValue(value) {
     const newValue = buildNewValue(this.state, value)
@@ -78,7 +77,7 @@ export default class Calculator extends Component{
       <div className={`${styles}`}>
         <Display>{this.state.displayValue}</Display>
         <div>
-          <ClearButton onClickHandler={this.clearValue}>clear</ClearButton>
+          <ClearButton onClick={() => (this.clearValue())}>clear</ClearButton>
           <ModeButton onClick={() => (this.setMode(ADDITION))}>+</ModeButton>
           <ModeButton onClick={() => (this.setMode(SUBSTARCTION))}>-</ModeButton>
           <ModeButton onClick={() => (this.setMode(MULTIPLICATION))}>×</ModeButton>
@@ -86,22 +85,22 @@ export default class Calculator extends Component{
           <ModeButton onClick={() => (this.execute()) }>=</ModeButton>
         </div>
         <div>
-          <NumberButton onClickHandler={this.appendValue}>1</NumberButton>
-          <NumberButton onClickHandler={this.appendValue}>2</NumberButton>
-          <NumberButton onClickHandler={this.appendValue}>3</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(1))}>1</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(2))}>2</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(3))}>3</NumberButton>
         </div>
         <div>
-          <NumberButton onClickHandler={this.appendValue}>4</NumberButton>
-          <NumberButton onClickHandler={this.appendValue}>5</NumberButton>
-          <NumberButton onClickHandler={this.appendValue}>6</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(4))}>4</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(5))}>5</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(6))}>6</NumberButton>
         </div>
         <div>
-          <NumberButton onClickHandler={this.appendValue}>7</NumberButton>
-          <NumberButton onClickHandler={this.appendValue}>8</NumberButton>
-          <NumberButton onClickHandler={this.appendValue}>9</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(7))}>7</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(8))}>8</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(9))}>9</NumberButton>
         </div>
         <div>
-          <NumberButton onClickHandler={this.appendValue}>0</NumberButton>
+          <NumberButton onClick={() => (this.appendValue(0))}>0</NumberButton>
         </div>
         <div>mode: {this.state.mode}</div>
       </div>

@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 
-const ClearButton = ({children, onClickHandler}) => {
+const ClearButton = ({children, onClick}) => {
   return (
-    <button onClick={() => { onClickHandler() }}>
+    <button onClick={() => { onClick() }}>
       {children}
     </button>
   )
 }
 
 ClearButton.propTypes = {
-  onClickHandler: React.PropTypes.func
+  onClick: React.PropTypes.func
 }
 
 export default ClearButton

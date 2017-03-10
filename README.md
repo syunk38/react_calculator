@@ -7,7 +7,6 @@
 * StoryBookでテスト
 
 ### 機能的
-* history
 * 少数の扱い
 * ClearとAllClear
 * =連打で直前の演算を行う
