@@ -64,11 +64,17 @@ export default class Calculator extends Component{
   execute() {
     const func = funcByMode(this.state.mode)
     const result = func(this.state.leftValue, this.state.rightValue)
+    if (Number.isNaN(result)) {
+      this.setState({
+        ...this.state,
+        displayValue: 'Err'
+      })
+      return;
+    }
     this.setState({
+      ...this.state,
       displayValue: result.toString(),
-      leftValue: result,
-      rightValue: 0,
-      mode: NEUTRAL
+      leftValue: result
     })
   }
   render() {
