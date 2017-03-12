@@ -5,7 +5,9 @@ import { NEUTRAL } from '../../constants/modes'
 // components
 import NumberPanel from '../NumberPanel'
 import FunctionPanel from '../FunctionPanel'
+import UtilPanel from '../UtilPanel'
 import Display from '../Display'
+import Flex from '../Flex'
 /// Util
 import funcByMode from './funcByMode'
 import buildNewValue from './buildNewValue'
@@ -44,7 +46,7 @@ export default class Calculator extends Component{
       ...this.state,
       rightValue: 0,
       leftValue: parseInt(this.state.displayValue),
-      mode: mode
+      mode
     })
   }
   execute() {
@@ -65,13 +67,17 @@ export default class Calculator extends Component{
   }
   render() {
     return (
-      <div className={`${styles}`}>
+      <div className={styles}>
         <Display>{this.state.displayValue}</Display>
-        <FunctionPanel
-          onClear={() => (this.clearValue())}
-          onSetMode={(mode) => (this.setMode(mode))}
-          onExecute={() => (this.execute())} />
-        <NumberPanel onAppendNumber={(number) => {this.appendValue(number)}}/>
+        <Flex>
+          <div>
+            <UtilPanel onClear={() => (this.clearValue())}/>
+            <NumberPanel onAppendNumber={(number) => {this.appendValue(number)}}/>
+          </div>
+          <FunctionPanel
+            onSetMode={(mode) => (this.setMode(mode))}
+            onExecute={() => (this.execute())} />
+        </Flex>
       </div>
     )
   }

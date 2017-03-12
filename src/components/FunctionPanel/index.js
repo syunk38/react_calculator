@@ -9,7 +9,6 @@ const FunctionButton = ({children, onPush}) => (
 const FunctionPanel = ({onClear, onSetMode, onExecute}) => {
   return (
     <div>
-      <FunctionButton onPush={onClear}>AC</FunctionButton>
       <FunctionButton onPush={() => (onSetMode(ADDITION))}>+</FunctionButton>
       <FunctionButton onPush={() => (onSetMode(SUBSTARCTION))}>-</FunctionButton>
       <FunctionButton onPush={() => (onSetMode(MULTIPLICATION))}>×</FunctionButton>
