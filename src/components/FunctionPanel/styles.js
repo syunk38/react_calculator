@@ -6,5 +6,7 @@ export default css({
   height: '50px',
   background: 'rgb(243,145,62)',
   color: 'rgb(250,250,250)',
-  border: '1px solid rgb(142,142,142)'
+  border: 'none',
+  borderBottom: '1px solid rgb(142,142,142)',
+  borderRight: '1px solid rgb(142,142,142)'
 })
