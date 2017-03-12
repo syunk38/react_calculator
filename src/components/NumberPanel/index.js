@@ -2,30 +2,30 @@ import React, { Component, PropTypes } from 'react'
 import { buttonStyle } from './styles'
 import { css } from 'glamor'
 
-const NumberButton = ({children, onAppendNumber, optionStyle}) => (
-  <button className={css(buttonStyle, optionStyle)} onClick={() => (onAppendNumber(children))}>{children}</button>
+const NumberButton = ({children, onPush, optionStyle}) => (
+  <button className={css(buttonStyle, optionStyle)} onClick={onPush}>{children}</button>
 )
 
 const NumberPanel = ({onAppendNumber}) => {
   return (
     <div>
       <div>
-        <NumberButton onAppendNumber={onAppendNumber}>7</NumberButton>
-        <NumberButton onAppendNumber={onAppendNumber}>8</NumberButton>
-        <NumberButton onAppendNumber={onAppendNumber}>9</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(7) }}>7</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(8) }}>8</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(9) }}>9</NumberButton>
       </div>
       <div>
-        <NumberButton onAppendNumber={onAppendNumber}>4</NumberButton>
-        <NumberButton onAppendNumber={onAppendNumber}>5</NumberButton>
-        <NumberButton onAppendNumber={onAppendNumber}>6</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(4) }}>4</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(5) }}>5</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(6) }}>6</NumberButton>
       </div>
       <div>
-        <NumberButton onAppendNumber={onAppendNumber}>1</NumberButton>
-        <NumberButton onAppendNumber={onAppendNumber}>2</NumberButton>
-        <NumberButton onAppendNumber={onAppendNumber}>3</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(1) }}>1</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(2) }}>2</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(3) }}>3</NumberButton>
       </div>
       <div>
-        <NumberButton onAppendNumber={onAppendNumber} optionStyle={css({width: '150px'})}>0</NumberButton>
+        <NumberButton onPush={() => { onAppendNumber(0) }} optionStyle={css({width: '150px'})}>0</NumberButton>
       </div>
     </div>
   )
